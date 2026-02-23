@@ -28,6 +28,7 @@ struct MovieDetail: Equatable {
         body {
             font-family: -apple-system, Helvetica, Arial, sans-serif;
             font-size: 15px;
+            color: #F54927;
         }
         </style>
         </head>
