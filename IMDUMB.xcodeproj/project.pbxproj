@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		975C0AE32F4C21F50072095C /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 975C0AE22F4C21F50072095C /* FirebaseRemoteConfig */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		975C0A7D2F4BFF500072095C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -65,6 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				975C0AE32F4C21F50072095C /* FirebaseRemoteConfig in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,6 +130,7 @@
 			);
 			name = IMDUMB;
 			packageProductDependencies = (
+				975C0AE22F4C21F50072095C /* FirebaseRemoteConfig */,
 			);
 			productName = IMDUMB;
 			productReference = 975C0A632F4BFF4F0072095C /* IMDUMB.app */;
@@ -208,6 +214,9 @@
 			);
 			mainGroup = 975C0A5A2F4BFF4F0072095C;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				975C0AE12F4C21F50072095C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 975C0A642F4BFF4F0072095C /* Products */;
 			projectDirPath = "";
@@ -575,6 +584,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		975C0AE12F4C21F50072095C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.9.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		975C0AE22F4C21F50072095C /* FirebaseRemoteConfig */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 975C0AE12F4C21F50072095C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseRemoteConfig;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 975C0A5B2F4BFF4F0072095C /* Project object */;
 }
