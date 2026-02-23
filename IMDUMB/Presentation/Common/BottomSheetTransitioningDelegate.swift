@@ -8,7 +8,7 @@
 import UIKit
 
 final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
-    
+
     func animationController(
         forPresented presented: UIViewController,
         presenting: UIViewController,

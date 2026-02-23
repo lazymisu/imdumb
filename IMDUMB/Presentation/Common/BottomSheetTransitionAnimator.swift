@@ -33,7 +33,7 @@ final class BottomSheetTransitionAnimator: NSObject, UIViewControllerAnimatedTra
         using transitionContext: UIViewControllerContextTransitioning,
         duration: TimeInterval
     ) {
-        guard let toVC = transitionContext.viewController(forKey: .to) as? RecommendViewController,
+        guard let toVC = transitionContext.viewController(forKey: .to) as? BottomSheetPresentable,
               let toView = transitionContext.view(forKey: .to) else {
             transitionContext.completeTransition(false)
             return
@@ -67,9 +67,7 @@ final class BottomSheetTransitionAnimator: NSObject, UIViewControllerAnimatedTra
         using transitionContext: UIViewControllerContextTransitioning,
         duration: TimeInterval
     ) {
-        guard
-            let fromVC = transitionContext.viewController(forKey: .from) as? RecommendViewController
-        else {
+        guard let fromVC = transitionContext.viewController(forKey: .from) as? BottomSheetPresentable else {
             transitionContext.completeTransition(false)
             return
         }

@@ -8,7 +8,7 @@
 import UIKit
 import Combine
 
-final class RecommendViewController: UIViewController {
+final class RecommendViewController: UIViewController, BottomSheetPresentable {
     @IBOutlet private weak var lblOverview: UILabel!
     @IBOutlet private weak var txvComment: UITextView!
     @IBOutlet private weak var bottomConstraint: NSLayoutConstraint!

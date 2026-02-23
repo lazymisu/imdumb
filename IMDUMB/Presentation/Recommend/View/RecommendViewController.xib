@@ -26,7 +26,7 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRY-12-FGA">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gRY-12-FGA" userLabel="View Dimmed">
                     <rect key="frame" x="0.0" y="0.0" width="393" height="784"/>
                     <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <gestureRecognizers/>
@@ -34,7 +34,7 @@
                         <outletCollection property="gestureRecognizers" destination="gou-84-E6X" appends="YES" id="UgN-aX-Uq6"/>
                     </connections>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aWn-y8-fZ5">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aWn-y8-fZ5" userLabel="View Container">
                     <rect key="frame" x="0.0" y="434" width="393" height="350"/>
                     <subviews>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="syj-6o-6xN">
@@ -125,6 +125,10 @@
                         <outletCollection property="gestureRecognizers" destination="UsV-lq-HkR" appends="YES" id="bvL-1a-CIn"/>
                     </connections>
                 </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Upn-L8-mVf">
+                    <rect key="frame" x="0.0" y="784" width="393" height="68"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -136,8 +140,12 @@
                 <constraint firstItem="gRY-12-FGA" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8hd-fP-Q8u"/>
                 <constraint firstItem="aWn-y8-fZ5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="L2m-Di-2B1"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="gRY-12-FGA" secondAttribute="trailing" id="Soh-um-C0a"/>
+                <constraint firstItem="Upn-L8-mVf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="bYH-GV-fbc"/>
+                <constraint firstAttribute="bottom" secondItem="Upn-L8-mVf" secondAttribute="bottom" id="gVK-ex-CmR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="gRY-12-FGA" secondAttribute="bottom" id="idB-6o-r4H"/>
+                <constraint firstAttribute="trailing" secondItem="Upn-L8-mVf" secondAttribute="trailing" id="liZ-1S-mDv"/>
                 <constraint firstItem="gRY-12-FGA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="lzR-lX-0af"/>
+                <constraint firstItem="Upn-L8-mVf" firstAttribute="top" secondItem="aWn-y8-fZ5" secondAttribute="bottom" id="wa3-et-fHb"/>
             </constraints>
             <point key="canvasLocation" x="3.8167938931297707" y="19.718309859154932"/>
         </view>
@@ -154,7 +162,7 @@
     </objects>
     <resources>
         <namedColor name="AccentColor">
-            <color red="1" green="0.79199999570846558" blue="0.15700000524520874" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.92299997806549072" green="0.41100001335144043" blue="0.9660000205039978" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
