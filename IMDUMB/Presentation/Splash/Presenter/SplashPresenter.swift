@@ -12,6 +12,7 @@ protocol SplashViewProtocol: AnyObject {
     func hideLoading()
     func navigateToHome()
     func showError(message: String)
+    func showWelcomeMessage(_ message: String)
 }
 
 protocol SplashPresenterProtocol {
@@ -20,18 +21,36 @@ protocol SplashPresenterProtocol {
 
 final class SplashPresenter: SplashPresenterProtocol {
     weak var view: SplashViewProtocol?
+    private let fetchRemoteConfigUseCase: FetchRemoteConfigUseCaseProtocol
     
-    init(view: SplashViewProtocol) {
+    init(
+        view: SplashViewProtocol,
+        fetchRemoteConfigUseCase: FetchRemoteConfigUseCaseProtocol
+    ) {
         self.view = view
+        self.fetchRemoteConfigUseCase = fetchRemoteConfigUseCase
     }
     
     func viewDidLoad() {
         view?.showLoading()
         
-        // TODO: Fetch remote config...
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) { [weak self] in
-            self?.view?.hideLoading()
-            self?.view?.navigateToHome()
+        fetchRemoteConfigUseCase.execute { [weak self] result in
+            DispatchQueue.main.async {
+                self?.view?.hideLoading()
+
+                switch result {
+                case .success(let config):
+                    let welcomeMessage = config["welcome_message"] ?? ""
+                    self?.view?.showWelcomeMessage(welcomeMessage)
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                        self?.view?.navigateToHome()
+                    }
+                    
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    self?.view?.showError(message: error.localizedDescription)
+                }
+            }
         }
     }
 }
