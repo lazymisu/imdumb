@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SplashViewController" customModule="IMDUMB" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="chX-ee-lS9" id="4gM-HF-asg"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,12 +25,17 @@
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="chX-ee-lS9">
+                    <rect key="frame" x="186.66666666666666" y="452.66666666666669" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="Nlz-z9-4fv" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Phc-Dk-MtU"/>
+                <constraint firstItem="chX-ee-lS9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="PrG-AT-I96"/>
                 <constraint firstItem="Nlz-z9-4fv" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="UNj-ol-XmR"/>
+                <constraint firstItem="chX-ee-lS9" firstAttribute="top" secondItem="Nlz-z9-4fv" secondAttribute="bottom" constant="16" id="k05-IZ-thI"/>
             </constraints>
             <point key="canvasLocation" x="-51" y="20"/>
         </view>

@@ -8,22 +8,38 @@
 import UIKit
 
 class SplashViewController: UIViewController {
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
+    
+    // MARK: - Properties
+    
+    private var presenter: SplashPresenterProtocol!
+    
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        presenter = SplashPresenter(view: self)
+        presenter.viewDidLoad()
     }
+}
 
+// MARK: - SplashViewProtocol
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+extension SplashViewController: SplashViewProtocol {
+    
+    func showLoading() {
+        activityIndicator.startAnimating()
     }
-    */
-
+    
+    func hideLoading() {
+        activityIndicator.stopAnimating()
+    }
+    
+    func navigateToHome() {
+        // TODO: Push to home screen
+    }
+    
+    func showError(message: String) {
+        // TODO: Show alert with message
+    }
 }
