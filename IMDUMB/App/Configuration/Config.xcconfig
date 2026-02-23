@@ -11,4 +11,4 @@
 APP_NAME = IMDUMB
 APP_BUNDLE_ID = com.fchacaltana.imdumb
 API_BASE_URL = https:/$()/api.themoviedb.org/3
-API_KEY = TU_API_KEY_DEV
+API_KEY = fc42a2f8b3398e9fbdeebfc9857ef79c
