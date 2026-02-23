@@ -10,5 +10,22 @@ final class DependencyManager {
     
     private init() {}
     
-    // TODO: Add dependencies...
+    func makeFirebaseRemoteConfigDataSource() -> FirebaseRemoteConfigDataSourceProtocol {
+        FirebaseRemoteConfigDataSource()
+    }
+    
+    func makeRemoteConfigRepository() -> RemoteConfigRepositoryProtocol {
+        RemoteConfigRepository(remoteDataSource: makeFirebaseRemoteConfigDataSource())
+    }
+    
+    func makeFetchRemoteConfigUseCase() -> FetchRemoteConfigUseCaseProtocol {
+        FetchRemoteConfigUseCase(repository: makeRemoteConfigRepository())
+    }
+    
+    func makeSplashPresenter(view: SplashViewProtocol) -> SplashPresenterProtocol {
+        SplashPresenter(
+            view: view,
+            fetchRemoteConfigUseCase: makeFetchRemoteConfigUseCase()
+        )
+    }
 }
