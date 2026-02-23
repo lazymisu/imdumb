@@ -27,6 +27,7 @@ final class MovieDetailViewController: UIViewController {
     private var presenter: MovieDetailPresenterProtocol!
     private var images: [MovieImage] = []
     private var cast: [Actor] = []
+    private let bottomSheetDelegate = BottomSheetTransitioningDelegate()
     
     // MARK: - Lifecycle
     
@@ -58,18 +59,12 @@ final class MovieDetailViewController: UIViewController {
     // MARK: - Actions
     
     @IBAction private func didTapRecommend(_ sender: UIButton) {
-//        guard let detail = presenter.movieDetail else { return }
-//        let recommendVC = RecommendViewController(nibName: "RecommendViewController", bundle: nil)
-//        recommendVC.movieDetail = detail
-//        recommendVC.modalPresentationStyle = .pageSheet
-//        
-//        if let sheet = recommendVC.sheetPresentationController {
-//            sheet.detents = [.medium(), .large()]
-//            sheet.prefersGrabberVisible = true
-//            sheet.preferredCornerRadius = 20
-//        }
-//        
-//        present(recommendVC, animated: true)
+        guard let detail = presenter.movieDetail else { return }
+        let recommendVC = RecommendViewController(nibName: "RecommendViewController", bundle: nil)
+        recommendVC.movieDetail = detail
+        recommendVC.modalPresentationStyle = .custom
+        recommendVC.transitioningDelegate = bottomSheetDelegate
+        present(recommendVC, animated: true)
     }
 }
 

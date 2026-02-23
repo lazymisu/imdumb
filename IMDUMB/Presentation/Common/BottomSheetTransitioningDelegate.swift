@@ -9,14 +9,17 @@ import UIKit
 
 final class BottomSheetTransitioningDelegate: NSObject, UIViewControllerTransitioningDelegate {
     
-    func presentationController(
+    func animationController(
         forPresented presented: UIViewController,
-        presenting: UIViewController?,
+        presenting: UIViewController,
         source: UIViewController
-    ) -> UIPresentationController? {
-        return DimmedPresentationController(
-            presentedViewController: presented,
-            presenting: presenting
-        )
+    ) -> UIViewControllerAnimatedTransitioning? {
+        BottomSheetTransitionAnimator(isPresenting: true)
+    }
+
+    func animationController(
+        forDismissed dismissed: UIViewController
+    ) -> UIViewControllerAnimatedTransitioning? {
+        BottomSheetTransitionAnimator(isPresenting: false)
     }
 }
