@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SplashViewController" customModule="IMDUMB" customModuleProvider="target">
             <connections>
                 <outlet property="activityIndicator" destination="chX-ee-lS9" id="4gM-HF-asg"/>
+                <outlet property="lblWelcome" destination="kqe-nl-wZv" id="riJ-IC-Y1u"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -19,23 +20,28 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IMDUMB" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nlz-z9-4fv">
-                    <rect key="frame" x="162.66666666666666" y="415.66666666666669" width="68" height="21"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="chX-ee-lS9">
-                    <rect key="frame" x="186.66666666666666" y="452.66666666666669" width="20" height="20"/>
-                </activityIndicatorView>
+                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="bQ1-sR-i1c">
+                    <rect key="frame" x="16" y="416" width="361" height="20"/>
+                    <subviews>
+                        <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqe-nl-wZv">
+                            <rect key="frame" x="0.0" y="0.0" width="361" height="0.0"/>
+                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="chX-ee-lS9">
+                            <rect key="frame" x="0.0" y="0.0" width="361" height="20"/>
+                        </activityIndicatorView>
+                    </subviews>
+                </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="Nlz-z9-4fv" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Phc-Dk-MtU"/>
-                <constraint firstItem="chX-ee-lS9" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="PrG-AT-I96"/>
-                <constraint firstItem="Nlz-z9-4fv" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="UNj-ol-XmR"/>
-                <constraint firstItem="chX-ee-lS9" firstAttribute="top" secondItem="Nlz-z9-4fv" secondAttribute="bottom" constant="16" id="k05-IZ-thI"/>
+                <constraint firstItem="bQ1-sR-i1c" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="16" id="T4D-x1-jHg"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="bQ1-sR-i1c" secondAttribute="trailing" constant="16" id="dFy-HC-rLq"/>
+                <constraint firstItem="bQ1-sR-i1c" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="e3c-41-e45"/>
+                <constraint firstItem="bQ1-sR-i1c" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="mwD-fo-mxh"/>
             </constraints>
             <point key="canvasLocation" x="-51" y="20"/>
         </view>
