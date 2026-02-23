@@ -10,22 +10,53 @@ final class DependencyManager {
     
     private init() {}
     
-    func makeFirebaseRemoteConfigDataSource() -> FirebaseRemoteConfigDataSourceProtocol {
-        FirebaseRemoteConfigDataSource()
-    }
+    // MARK: - Data Sources
     
-    func makeRemoteConfigRepository() -> RemoteConfigRepositoryProtocol {
-        RemoteConfigRepository(remoteDataSource: makeFirebaseRemoteConfigDataSource())
-    }
+    lazy var firebaseRemoteConfigDataSource: FirebaseRemoteConfigDataSourceProtocol = {
+        FirebaseRemoteConfigDataSource()
+    }()
+    
+    lazy var apiClient: APIClientProtocol = {
+        APIClient()
+    }()
+    
+    lazy var movieRemoteDataSource: MovieRemoteDataSourceProtocol = {
+        MovieRemoteDataSource(apiClient: apiClient)
+    }()
+    
+    // MARK: - Repositories
+    
+    lazy var remoteConfigRepository: RemoteConfigRepositoryProtocol = {
+        RemoteConfigRepository(remoteDataSource: firebaseRemoteConfigDataSource)
+    }()
+    
+    lazy var movieRepository: MovieRepositoryProtocol = {
+        MovieRepository(remoteDataSource: movieRemoteDataSource)
+    }()
+    
+    // MARK: - Use Cases
     
     func makeFetchRemoteConfigUseCase() -> FetchRemoteConfigUseCaseProtocol {
-        FetchRemoteConfigUseCase(repository: makeRemoteConfigRepository())
+        FetchRemoteConfigUseCase(repository: remoteConfigRepository)
     }
+    
+    func makeFetchCategoriesUseCase() -> FetchCategoriesUseCaseProtocol {
+        FetchCategoriesUseCase(repository: movieRepository)
+    }
+    
+    // MARK: - Presenters
     
     func makeSplashPresenter(view: SplashViewProtocol) -> SplashPresenterProtocol {
         SplashPresenter(
             view: view,
             fetchRemoteConfigUseCase: makeFetchRemoteConfigUseCase()
+        )
+    }
+    
+    func makeHomePresenter(view: HomeViewProtocol) -> HomePresenter {
+        HomePresenter(
+            view: view,
+            fetchCategoriesUseCase: makeFetchCategoriesUseCase()
         )
     }
 }
