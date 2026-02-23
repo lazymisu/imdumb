@@ -1,0 +1,14 @@
+//
+//  Dev.xcconfig
+//  IMDUMB
+//
+//  Created by felix on 22/02/26.
+//
+
+// Configuration settings file format documentation can be found at:
+// https://developer.apple.com/documentation/xcode/adding-a-build-configuration-file-to-your-project
+
+APP_NAME = IMDUMB
+APP_BUNDLE_ID = com.fchacaltana.imdumb
+API_BASE_URL = https:/$()/api.themoviedb.org/3
+API_KEY = TU_API_KEY_DEV
