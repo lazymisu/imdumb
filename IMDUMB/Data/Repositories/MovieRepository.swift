@@ -37,4 +37,76 @@ final class MovieRepository: MovieRepositoryProtocol {
             }
         }
     }
+    
+    func fetchMovieDetail(movieId: Int, completion: @escaping FetchMovieDetailCompletion) {
+        let group = DispatchGroup()
+        var detailDTO: MovieDetailDTO?
+        var imageDTOs: [MovieImageDTO] = []
+        var actorDTOs: [ActorDTO] = []
+        var fetchError: Error?
+        let lock = NSLock()
+        
+        group.enter()
+        remoteDataSource.fetchMovieDetail(movieId: movieId) { result in
+            lock.lock()
+            switch result {
+            case .success(let dto):
+                detailDTO = dto
+            case .failure(let error):
+                fetchError = error
+            }
+            lock.unlock()
+            group.leave()
+        }
+        
+        group.enter()
+        remoteDataSource.fetchMovieImages(movieId: movieId) { result in
+            lock.lock()
+            switch result {
+            case .success(let dtos):
+                imageDTOs = dtos
+            case .failure(let error):
+                if fetchError == nil { fetchError = error }
+            }
+            lock.unlock()
+            group.leave()
+        }
+        
+        group.enter()
+        remoteDataSource.fetchMovieCast(movieId: movieId) { result in
+            lock.lock()
+            switch result {
+            case .success(let dtos):
+                actorDTOs = dtos
+            case .failure(let error):
+                if fetchError == nil { fetchError = error }
+            }
+            lock.unlock()
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            if let error = fetchError, detailDTO == nil {
+                completion(.failure(error))
+                return
+            }
+            
+            guard let detail = detailDTO else {
+                completion(.failure(APIError.invalidResponse))
+                return
+            }
+            
+            let movieDetail = MovieDetail(
+                id: detail.id,
+                title: detail.title,
+                overview: detail.overview,
+                voteAverage: detail.voteAverage,
+                releaseDate: detail.releaseDate ?? "",
+                images: imageDTOs.map { $0.toDomain() },
+                cast: actorDTOs.map { $0.toDomain() }
+            )
+            
+            completion(.success(movieDetail))
+        }
+    }
 }

@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="IMDUMB" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="TtA-AM-Nwj" id="Ckk-10-wMN"/>
                 <outlet property="clvCategories" destination="o3w-cd-pUO" id="xBh-nJ-45M"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -20,7 +21,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="o3w-cd-pUO">
-                    <rect key="frame" x="0.0" y="118" width="393" height="666"/>
+                    <rect key="frame" x="0.0" y="118" width="393" height="734"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="aQd-jQ-hKg">
                         <size key="itemSize" width="128" height="128"/>
@@ -33,12 +34,17 @@
                         <outlet property="delegate" destination="-1" id="5U1-jU-MSB"/>
                     </connections>
                 </collectionView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="TtA-AM-Nwj">
+                    <rect key="frame" x="186.66666666666666" y="416" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="o3w-cd-pUO" secondAttribute="bottom" id="Ien-Cy-laN"/>
+                <constraint firstItem="TtA-AM-Nwj" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="2tF-b7-Rew"/>
+                <constraint firstAttribute="bottom" secondItem="o3w-cd-pUO" secondAttribute="bottom" id="Ien-Cy-laN"/>
                 <constraint firstItem="o3w-cd-pUO" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Kos-qF-yBz"/>
+                <constraint firstItem="TtA-AM-Nwj" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="cGl-8n-6Lk"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="o3w-cd-pUO" secondAttribute="trailing" id="jac-Rv-v7a"/>
                 <constraint firstItem="o3w-cd-pUO" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="thF-vS-EyX"/>
             </constraints>

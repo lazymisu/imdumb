@@ -9,6 +9,7 @@ import UIKit
 
 class HomeViewController: UIViewController {
     @IBOutlet private weak var clvCategories: UICollectionView!
+    @IBOutlet private weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: - Properties
     
@@ -41,11 +42,11 @@ class HomeViewController: UIViewController {
 
 extension HomeViewController: HomeViewProtocol {
     func showLoading() {
-        
+        activityIndicator.startAnimating()
     }
     
     func hideLoading() {
-        
+        activityIndicator.stopAnimating()
     }
     
     func showCategories(_ categories: [Category]) {
@@ -85,7 +86,7 @@ extension HomeViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         cell.configure(with: categories[indexPath.item])
-//        cell.delegate = self
+        cell.delegate = self
         return cell
     }
 }
@@ -100,5 +101,17 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath
     ) -> CGSize {
         return collectionView.bounds.size
+    }
+}
+
+// MARK: - CategoryCollectionViewCellDelegate
+
+extension HomeViewController: CategoryCollectionViewCellDelegate {
+    
+    func categoryCell(_ cell: CategoryCollectionViewCell, didSelectMovie movie: Movie) {
+        let detailVC = MovieDetailViewController(nibName: "MovieDetailViewController", bundle: nil)
+        detailVC.movieId = movie.id
+        detailVC.movieTitle = movie.title
+        navigationController?.pushViewController(detailVC, animated: true)
     }
 }

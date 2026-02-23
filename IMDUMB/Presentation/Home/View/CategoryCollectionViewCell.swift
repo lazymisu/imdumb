@@ -7,12 +7,17 @@
 
 import UIKit
 
+protocol CategoryCollectionViewCellDelegate: AnyObject {
+    func categoryCell(_ cell: CategoryCollectionViewCell, didSelectMovie movie: Movie)
+}
+
 class CategoryCollectionViewCell: UICollectionViewCell {
     @IBOutlet private weak var lblCategory: UILabel!
     @IBOutlet private weak var tbvMovies: UITableView!
     
     // MARK: - Properties
     
+    weak var delegate: CategoryCollectionViewCellDelegate?
     private var movies: [Movie] = []
     
     // MARK: - Methods
@@ -63,8 +68,7 @@ extension CategoryCollectionViewCell: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let movie = movies[indexPath.row]
-        print(movie)
-//        delegate?.categoryCell(self, didSelectMovie: movie)
+        delegate?.categoryCell(self, didSelectMovie: movie)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

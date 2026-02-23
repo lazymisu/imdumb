@@ -10,4 +10,5 @@ import Foundation
 protocol MovieRepositoryProtocol {
     func fetchCategories(completion: @escaping FetchCategoriesCompletion)
     func fetchMovies(forCategoryId categoryId: Int, completion: @escaping FetchMoviesCompletion)
+    func fetchMovieDetail(movieId: Int, completion: @escaping FetchMovieDetailCompletion)
 }

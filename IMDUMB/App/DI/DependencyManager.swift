@@ -44,6 +44,10 @@ final class DependencyManager {
         FetchCategoriesUseCase(repository: movieRepository)
     }
     
+    func makeFetchMovieDetailUseCase() -> FetchMovieDetailUseCaseProtocol {
+        FetchMovieDetailUseCase(repository: movieRepository)
+    }
+    
     // MARK: - Presenters
     
     func makeSplashPresenter(view: SplashViewProtocol) -> SplashPresenterProtocol {
@@ -57,6 +61,14 @@ final class DependencyManager {
         HomePresenter(
             view: view,
             fetchCategoriesUseCase: makeFetchCategoriesUseCase()
+        )
+    }
+    
+    func makeMovieDetailPresenter(view: MovieDetailViewProtocol, movieId: Int) -> MovieDetailPresenterProtocol {
+        MovieDetailPresenter(
+            view: view,
+            movieId: movieId,
+            fetchMovieDetailUseCase: makeFetchMovieDetailUseCase()
         )
     }
 }
