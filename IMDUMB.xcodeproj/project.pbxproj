@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		975C0AE32F4C21F50072095C /* FirebaseRemoteConfig in Frameworks */ = {isa = PBXBuildFile; productRef = 975C0AE22F4C21F50072095C /* FirebaseRemoteConfig */; };
+		975C0B9A2F4C31F50072095C /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 975C0B992F4C31F50072095C /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +71,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				975C0AE32F4C21F50072095C /* FirebaseRemoteConfig in Frameworks */,
+				975C0B9A2F4C31F50072095C /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +133,7 @@
 			name = IMDUMB;
 			packageProductDependencies = (
 				975C0AE22F4C21F50072095C /* FirebaseRemoteConfig */,
+				975C0B992F4C31F50072095C /* Alamofire */,
 			);
 			productName = IMDUMB;
 			productReference = 975C0A632F4BFF4F0072095C /* IMDUMB.app */;
@@ -216,6 +219,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				975C0AE12F4C21F50072095C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				975C0B982F4C31F50072095C /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 975C0A642F4BFF4F0072095C /* Products */;
@@ -594,6 +598,14 @@
 				minimumVersion = 12.9.0;
 			};
 		};
+		975C0B982F4C31F50072095C /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.11.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -601,6 +613,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 975C0AE12F4C21F50072095C /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseRemoteConfig;
+		};
+		975C0B992F4C31F50072095C /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 975C0B982F4C31F50072095C /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
