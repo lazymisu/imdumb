@@ -7,6 +7,12 @@
 
 import Foundation
 
+// MARK: - SOLID: Single Responsibility Principle (SRP)
+// SplashPresenter tiene una única responsabilidad: coordinar la lógica de presentación
+// de la pantalla Splash. No conoce detalles de red, base de datos ni UI concreta.
+// Delega la obtención de datos al use case (FetchRemoteConfigUseCaseProtocol)
+// y la actualización visual a la vista (SplashViewProtocol).
+
 protocol SplashViewProtocol: AnyObject {
     func showLoading()
     func hideLoading()

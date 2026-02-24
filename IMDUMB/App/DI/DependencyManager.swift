@@ -5,6 +5,20 @@
 //  Created by felix on 22/02/26.
 //
 
+// MARK: - SOLID: Dependency Inversion Principle (DIP)
+// DependencyManager es el composition root de la aplicación. Aquí se conectan
+// las abstracciones (protocolos) con sus implementaciones concretas.
+//
+// Los módulos de alto nivel (Presenters) NO dependen de módulos de bajo nivel
+// (APIClient, FirebaseRemoteConfigDataSource). Ambos dependen de abstracciones:
+//   - HomePresenter depende de FetchCategoriesUseCaseProtocol (no de FetchCategoriesUseCase)
+//   - FetchCategoriesUseCase depende de MovieRepositoryProtocol (no de MovieRepository)
+//   - MovieRepository depende de MovieRemoteDataSourceProtocol (no de MovieRemoteDataSource)
+//
+// Esto permite:
+//   1. Inyectar mocks en tests sin modificar los presenters ni use cases.
+//   2. Cambiar implementaciones (ej. migrar de Alamofire a URLSession) sin afectar capas superiores.
+
 final class DependencyManager {
     static let shared = DependencyManager()
     
