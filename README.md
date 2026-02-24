@@ -111,6 +111,10 @@ Ver la sección de comentarios `// MARK: - SOLID` en cada archivo referenciado.
 
 ## Tests
 
+![coverage](screenshots/coverage.png)
+
+![tests](screenshots/tests.png)
+
 ```bash
 # Unit Tests
 Cmd + U  # en Xcode, o Product → Test
